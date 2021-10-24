@@ -20,16 +20,15 @@ public class ValidParentheses {
 
     public static boolean isValid(String s) {
         var stack = new Stack<String>();
-        var startPattern = Arrays.asList("(", "{", "[");
         var splits = s.split("");
 
         for (String target : splits) {
-            if (startPattern.contains(target)) {
+            if (isStartPattern(target)) {
                 stack.push(target);
                 continue;
             }
 
-            if(stack.isEmpty()) {
+            if (stack.isEmpty()) {
                 return false;
             }
 
@@ -38,6 +37,10 @@ public class ValidParentheses {
             }
         }
         return stack.isEmpty();
+    }
+
+    private static boolean isStartPattern(String target) {
+        return target.equals("(") || target.equals("{") || target.equals("[");
     }
 
     private static boolean isMatch(String target, String before) {
