@@ -109,6 +109,22 @@ public class AlgoUtils {
 
     /**
      * description
+     * Integer List -> Int Array
+     */
+    public int[] toIntArray(List<Integer> integers) {
+        return integers.stream().mapToInt(value -> value).toArray();
+    }
+
+    /**
+     * description
+     * Int Array -> Int List
+     */
+    public List<Integer> toIntList(int[] ints) {
+        return Arrays.stream(ints).boxed().collect(Collectors.toList());
+    }
+
+    /**
+     * description
      * BFS
      */
     public String bfs(int start, int[][] graph, boolean[] visited) {
